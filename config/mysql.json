@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "user": "", //mysql账号
+    "password": "", //mysql密码
+    "database": "", //mysql数据库
+    "port":"3306"
+}
