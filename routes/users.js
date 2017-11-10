@@ -1,5 +1,9 @@
 var express = require('express');
+var moment = require('moment');
 var sql = require('../connect');
+var jwt = require('jwt-simple');
+var app = require('../app');
+var { expiresTimeUnit, expiresTimeValue } = require('./../config/auth');
 var router = express.Router();
 
 /* GET users listing. */
@@ -12,7 +16,16 @@ router.post('/login', function(req, res, next) {
         error_msg: '检查用户名/密码是否正确'
       })
     }else {
-      res.send({
+      var expires = moment().add(expiresTimeValue, expiresTimeUnit).valueOf();
+      var token = jwt.encode({
+        iss: rows.id,
+        exp: expires
+      }, 'zgatry');
+      res.json({
+        data: {
+          token: token,
+          expires: expires
+        },
         error_code: 0,
         error_msg: 'ok'
       })
