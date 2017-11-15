@@ -9,11 +9,14 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var cors = require('cors');
+var jwt = require('jwt-simple');
 var app = express();
+var { secret } = require('./config/auth');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.set('jwtTokenSecret', secret);
 
 //跨域配置
 app.use(cors());
