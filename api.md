@@ -168,7 +168,8 @@ http请求方式: `GET`
           'vue',
           'router'
         ],
-        content: ''
+        content: '',
+        editTime: '2017-06-23'
       }
     ]
   },
@@ -196,7 +197,8 @@ http请求方式: `POST`
     'vue',
     'router',
   ],
-  content: ''
+  content: '',
+  editTime: '2017-06-23'
 }
 ```
 
@@ -273,7 +275,8 @@ http请求方式: `POST`
     'vue',
     'router',
   ],
-  content: '11'
+  content: '11',
+  editTime: '2017-06-23'
 }
 ```
 

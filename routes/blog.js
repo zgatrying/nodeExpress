@@ -24,12 +24,7 @@ router.post('/create', (req, res, next) => {
     })
   } else {
     sql.query(`select * from article where title = '${reqData.title}'`, function (err, rows) {
-      if (err) {
-        res.json({
-          error_code: -2,
-          error_msg: '数据库操作错误'
-        })
-      } else if (!err && rows.length !== 0) {
+      if (!err && rows.length !== 0) {
         res.json({
           error_code: -3,
           error_msg: '已存在该标题的博客'
@@ -61,6 +56,39 @@ router.post('/create', (req, res, next) => {
       }
     })
   }
+})
+
+router.post('/update', (req, res, next) => {
+  let data = req.body
+  sql.query(`select * from article where id = ${data.id}`, (err, rows) => {
+    if (err) {
+      res.json({
+        error_code: -2,
+        error_msg: '数据库查询出错'
+      })
+      console.log(err)
+    } else {
+      sql.query(`update article set ? where id = ${data.id}`, {
+        title: data.title,
+        content: data.content,
+        tags: data.tags,
+        editTime: data.editTime
+      }, (err, rows) => {
+        if (err) {
+          console.log(err)
+          res.json({
+            error_code: -2,
+            error_msg: '数据库更新失败'
+          })
+        } else {
+          res.json({
+            error_code: 0,
+            error_msg: 'ok'
+          })
+        }
+      })
+    }
+  })
 })
 
 router.get('/list', (req, res, next) => {
