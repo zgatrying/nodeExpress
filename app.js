@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/static', express.static('dist/static'))
+app.use('/static', express.static(path.join(__dirname, '/dist/static')))
 app.use('/', index);
 app.use((req, res, next) => {
   var token = req.headers['x-access-token']

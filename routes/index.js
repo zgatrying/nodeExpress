@@ -12,6 +12,10 @@ router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
+router.get('/favicon.ico', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../dist/favicon.ico'))
+})
+
 router.post('/login', function(req, res, next) {
   sql.query('select * from account where account="' + req.body.username + '" and password="' + req.body.password+'"', function (err, rows) {
     if (err || rows.length == 0) {

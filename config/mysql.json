@@ -1,7 +1,7 @@
 {
     "host": "localhost",
-    "user": "root",
-    "password": "rudolph123",
-    "database": "university",
-    "port":"3306"
+    "user": "", //数据库账号
+    "password": "", //密码
+    "database": "", //指定数据库
+    "port":"3306" //数据库端口号
 }
