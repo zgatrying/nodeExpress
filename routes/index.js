@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var router = express.Router();
 var { expiresTimeUnit, expiresTimeValue } = require('./../config/auth');
 var tokenMap = require('../utils/auth')
@@ -8,7 +9,7 @@ var sql = require('../connect');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
 router.post('/login', function(req, res, next) {
